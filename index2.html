@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=750,user-scalable=no">
+    <meta name="author" content="Techeonn,niikhiljha@gmail.com Delhi">
+    <title>Feelings</title>
+    <style type="text/css">
+        @font-face {
+            font-family: digit;
+            src: url('./public/digital-7_mono.ttf') format("truetype");
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        #mainDiv {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #loveHeart {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            position: absolute;
+        }
+
+        #code {
+            position: absolute;
+            top: 57%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 2.5em;
+            color: #ff69b4;
+            text-shadow: 1px 1px 5px #ffacd2;
+            max-width: 80%;
+            line-height: 1.8em;
+        }
+
+        #words {
+            position: absolute;
+            text-align: center;
+            color: #fff;
+        }
+
+        .signature {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #ffd700;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        #loveu {
+            animation: pulse 2s infinite;
+            font-size: 2em;
+            color: #ff69b4;
+            text-shadow: 2px 2px 10px #fff;
+        }
+
+        @keyframes flowerBlink {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        
+    </style>
+
+    <link href="./jscss/default.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="./jscss/jquery.js"></script>
+    <script type="text/javascript" src="./jscss/garden.js"></script>
+    <script type="text/javascript" src="./jscss/functions.js"></script>
+</head>
+
+<body>
+<div id="mainDiv">
+    <div id="loveHeart">
+        <canvas id="garden"></canvas>
+        <div id="code"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    const offsetX = $("#loveHeart").width() / 2;
+    const offsetY = $("#loveHeart").height() / 2 - 55;
+
+    if (!document.createElement('canvas').getContext) {
+        const msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Please use Chrome, Firefox, Safari, or Edge.";
+        document.body.appendChild(msg);
+        $("#code").css("display", "none");
+        $("#copyright").css("position", "absolute").css("bottom", "10px");
+        document.execCommand("stop");
+    } else {
+        const lines = [
+            "I am so lucky as you are part of my life timeline.",
+            "I wish you always smile because you are reason for my smile.",
+            "You look cutest and most beautiful when you smile.",
+            "Mujhe tumse baat krne ka mann krta",
+            "to sayad mai kavi kavi irrelevant talk krne lagta",
+            "But mai tumse fir se dosti karna chahta hu",
+            "Please Tum hi batao Mai Aisa Kya Karu yaarr",
+            "Jiss se mai tumahra ek achha dost ban pau",
+            "Mujhe Sirf wahi karna jiss se tum Khush raho",
+            "Please don't forget", "someone always here 4 u in any situation"
+        ];
+
+        function typeLine(line, index) {
+            setTimeout(() => {
+                $("#code").append(`<span class='comments'>${line}</span><br>`);
+                if (index === 0) {
+                    startHeartAnimation();
+                }
+            }, index * 2000); // Adjust timing for each line
+        }
+
+        lines.forEach((line, index) => {
+            typeLine(line, index);
+        });
+    }
+
+    
+</script>
+<audio src="./public/shangfen.mp3" autoplay="autoplay"></audio>
+</body>
+</html>
